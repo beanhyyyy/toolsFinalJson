@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Write File Excel To File JSON PRO</title>
+</head>
+
+<body>
+    <div style="padding: 0 20%;">
+        BAI TAP
+    </div>
+</body>
+<script>
+    var totalBai1 = 0;
+    function baitap1(n) {
+        if (n === 0) {
+            return totalBai1;
+        }
+        totalBai1 = totalBai1 + n;
+        n = n - 1;
+        return baitap1(n);
+    }
+    // ----------------------------------------------
+    var totalBai2 = 0;
+    function baitap2(n) {
+        if (n === 0) {
+            return totalBai2;
+        }
+        totalBai2 = totalBai2 + n ** 2;
+        n = n - 1;
+        return baitap2(n);
+    }
+    // ----------------------------------------------
+    var totalBai3 = 0;
+    function baitap3(n) {
+        if (n === 0) {
+            return totalBai3;
+        }
+        totalBai3 = totalBai3 + (1 / n);
+        n = n - 1;
+        return baitap3(n);
+    }
+    // ----------------------------------------------
+    var totalBai4 = 0;
+    function baitap4(n) {
+        if (n === 0) {
+            return totalBai4;
+        }
+        m = 2 * n;
+        totalBai4 = totalBai4 + (1 / m);
+        n = n - 1;
+        return baitap4(n);
+    }
+    // ----------------------------------------------
+    var totalBai5 = 0;
+    function baitap5(n) {
+        if (n === 0) {
+            return totalBai5;
+        }
+        m = 2 * n + 1;
+        totalBai5 = totalBai5 + (1 / m);
+        n = n - 1;
+        return baitap5(n);
+    }
+    // ----------------------------------------------
+    var totalBai6 = 0;
+    function baitap6(n) {
+        if (n === 0) {
+            return totalBai6;
+        }
+        m = n * (n + 1);
+        totalBai6 = totalBai6 + (1 / m);
+        n = n - 1;
+        return baitap6(n);
+    }
+    // ----------------------------------------------
+    var totalBai7 = 0;
+    function baitap7(n) {
+        if (n === 0) {
+            return totalBai7;
+        }
+        m = n + 1;
+        totalBai7 = totalBai7 + (n / m);
+        n = n - 1;
+        return baitap7(n);
+    }
+    // ----------------------------------------------
+    var totalBai8 = 0;
+    function baitap8(n) {
+        if (n === 0) {
+            return totalBai8;
+        }
+        m = 2 * n + 2;
+        totalBai8 = totalBai8 + ((2 * n + 1) / m);
+        n = n - 1;
+        return baitap8(n);
+    }
+    // ----------------------------------------------
+    var xBai9 = 1;
+    function baitap9(n) {
+        if (n === 0) {
+            return xBai9;
+        }
+        xBai9 = xBai9 * n;
+        n = n - 1;
+        return baitap9(n);
+    }
+    // ----------------------------------------------
+    var xBai10 = 1;
+    function baitap10(x, n) {
+        if (n === 0) {
+            return xBai10;
+        }
+        xBai10 = xBai10 * (x ** n);
+        n = n - 1;
+        return baitap10(x, n);
+    }
+
+    // ----------------------------------------------
+    var totalBai11 = 0;
+    function baitap11(n) {
+        var xBai11_9 = 1;
+        function baitap11_9(n) {
+            if (n === 0) {
+                return xBai11_9;
+            }
+            xBai11_9 = xBai11_9 * n;
+            n = n - 1;
+            return baitap11_9(n);
+        }
+        if (n === 1) {
+            return totalBai11;
+        }
+        totalBai11 = totalBai11 + baitap11_9(n);
+        n = n - 1;
+        return baitap11(n);
+    }
+
+    // ----------------------------------------------
+    var totalBai11 = 0;
+    function baitap11(n) {
+        var xBai11_9 = 1;
+        function baitap11_9(n) {
+            if (n === 0) {
+                return xBai11_9;
+            }
+            xBai11_9 = xBai11_9 * n;
+            n = n - 1;
+            return baitap11_9(n);
+        }
+        if (n === 1) {
+            return totalBai11;
+        }
+        totalBai11 = totalBai11 + baitap11_9(n);
+        n = n - 1;
+        return baitap11(n);
+    }
+
+    // ----------------------------------------------
+    var totalBai12 = 0;
+    function baitap12(x, n) {
+
+
+        if (n === 1) {
+            return totalBai12;
+        }
+
+        totalBai12 = totalBai12 + x ** n;
+
+        n = n - 1;
+
+        return baitap12(x, n);
+    }
+
+    // ----------------------------------------------
+    var totalBai13 = 0;
+    function baitap13(x, n) {
+
+
+        if (n === 0) {
+            return totalBai13;
+        }
+
+        m = 2 * n;
+
+        totalBai13 = totalBai13 + x ** m;
+
+        n = n - 1;
+
+        return baitap13(x, n);
+    }
+
+    // ----------------------------------------------
+    var totalBai14 = 0;
+    function baitap14(x, n) {
+
+
+        if (n === 0) {
+            return totalBai14;
+        }
+
+        m = (2 * n) + 1;
+
+        totalBai14 = totalBai14 + x ** m;
+
+        n = n - 1;
+
+        return baitap14(x, n);
+    }
+
+    // ----------------------------------------------
+    var totalBai15 = 0;
+    function baitap15(n) {
+
+        var totalBai1 = 0;
+        function baitap1(n) {
+            if (n === 0) {
+                return totalBai1;
+            }
+            totalBai1 = totalBai1 + n;
+            n = n - 1;
+            return baitap1(n);
+        }
+
+        if (n === 0) {
+            return totalBai15;
+        }
+
+        totalBai15 = totalBai15 + 1 / baitap1(n);
+
+        n = n - 1;
+
+        return baitap15(n);
+    }
+
+    // ----------------------------------------------
+    var totalBai16 = 0;
+    function baitap16(x, n) {
+        // tong? n
+        var totalBai1 = 0;
+        function baitap1(n) {
+            if (n === 0) {
+                return totalBai1;
+            }
+            totalBai1 = totalBai1 + n;
+            n = n - 1;
+            return baitap1(n);
+        }
+
+        if (n === 0) {
+            return totalBai16;
+        }
+
+        m = x ** n;
+        totalBai16 = totalBai16 + m / baitap1(n);
+
+        n = n - 1;
+
+        return baitap16(x, n);
+    }
+
+    // ----------------------------------------------
+    var totalBai17 = 0;
+    function baitap17(x, n) {
+
+        // Tich
+        var xBai9 = 1;
+        function baitap9(n) {
+            if (n === 0) {
+                return xBai9;
+            }
+            xBai9 = xBai9 * n;
+            n = n - 1;
+            return baitap9(n);
+        }
+
+        if (n === 0) {
+            return totalBai17;
+        }
+
+        m = x ** n;
+
+        totalBai17 = totalBai17 + m / baitap9(n);
+
+        n = n - 1;
+
+        return baitap17(x, n);
+    }
+
+    // ----------------------------------------------
+    var totalBai18 = 0;
+    function baitap18(x, n) {
+
+        // Tich
+        var xBai9 = 1;
+        function baitap9(n) {
+            if (n === 0) {
+                return xBai9;
+            }
+            m = 2 * n;
+            xBai9 = xBai9 * m;
+            n = n - 1;
+            return baitap9(n);
+        }
+
+        if (n === 0) {
+            return totalBai18;
+        }
+
+        y = (2 * n);
+
+        m = x ** y;
+
+        totalBai18 = totalBai18 + m / baitap9(n);
+
+        n = n - 1;
+
+        return baitap18(x, n);
+    }
+
+    // ----------------------------------------------
+    var totalBai19 = 0;
+    function baitap19(x, n) {
+
+        // Tich
+        var xBai9 = 1;
+        function baitap9(n) {
+            if (n === 0) {
+                return xBai9;
+            }
+            m = (2 * n) + 1;
+            xBai9 = xBai9 * m;
+            n = n - 1;
+            return baitap9(n);
+        }
+
+        if (n === 0) {
+            return totalBai19;
+        }
+
+        y = (2 * n) + 1;
+
+        m = x ** y;
+
+        totalBai19 = totalBai19 + m / baitap9(n);
+
+        n = n - 1;
+
+        return baitap19(x, n);
+    }
+
+
+
+</script>
+
+
+</html>

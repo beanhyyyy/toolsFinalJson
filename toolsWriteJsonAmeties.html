@@ -26,12 +26,6 @@
         <input type="file" id="fileUpload" accept=".xls,.xlsx" /><br />
         <p><b>Đọc file Excel và xuất file Json</b></p>
         <button type="button" id="uploadExcel">Convert</button>
-        <p><b>Excel có các cột dữ liệu như sau:</b></p>
-        <p>Count:<b id="resultCount"></b>, Unique: <b id="resultUnique"></b></p>
-        <p><b id="resultCountCheck"></b> Cột: <b id="resultColumnCheck"></b></p>
-        <p>Có <b id="resultCountFile"></b>&nbsp;<b>fileJson</b> được xuất ra</p>
-        <p>Từ <b>fileJson.js</b> đến <b>fileJson.js</b>&nbsp;(<b id="resultFileEnd"></b>)</p>
-
     </div>
 </body>
 <script>
@@ -70,6 +64,7 @@
                     for (s = 0; s <= workbook.SheetNames.length; s++) {
                         var nameSheet = Object.keys(workbook.Sheets)[s].toString();
 
+
                         console.log(nameSheet)
 
                         // Check column (Hard : 24 col)
@@ -82,7 +77,7 @@
                         // console.log('nameSheet', workbook.Sheets.Sheet1)
 
 
-
+                        console.log('workbook.Sheets[nameSheet]', workbook.Sheets[nameSheet])
 
                         for (i = 0; i <= arrayCheckColumn.length - 1; i++) {
                             var check = `${arrayCheckColumn[i]}1`;
@@ -96,62 +91,49 @@
 
                         }
 
-                        // Show Data HTML
-                        document.getElementById("resultCountCheck").innerHTML = arrayResultCheckColumn.length;
-
-                        document.getElementById("resultColumnCheck").innerHTML = arrayResultCheckColumn;
-
-                        document.getElementById("resultCountFile").innerHTML = arrayResultCheckColumn.length - 1;
-
-                        document.getElementById("resultFileEnd").innerHTML = `${arrayResultCheckColumn.length - 2}`;
-
-                        document.getElementById("resultCount").innerHTML = workbook.Strings.Count;
-
-                        document.getElementById("resultUnique").innerHTML = workbook.Strings.Unique;
-
                         // Check : for [A-Z] => for [1 - String / [A-Z].length]
 
-                        for (i = 0; i <= arrayResultCheckColumn.length - 2; i++) {
+                        // 1 la` en, 2 la` vn
 
-                            var dataFinish = []
+                        var dataFinish = [];
 
-                            for (j = 1; j <= workbook.Strings.length / arrayResultCheckColumn.length; j++) {
+                        for (j = 2; j <= workbook.Strings.length / arrayResultCheckColumn.length; j = j + 2) {
 
-                                // set key = col A(j)
-                                let check = `${arrayCheckColumn[0]}${j}`;
 
-                                // set value = col [B,C,D,E,F,...](j)
-                                let check2 = `${arrayCheckColumn[i + 1]}${j}`;
+                            // set key = col C(j)
+                            let C = `${arrayCheckColumn[2]}${j}`;
 
-                                console.log('Hàng thiếu dữ liệu', check)
+                            // set value = col B(j)
+                            let B = `${arrayCheckColumn[1]}${j}`;
 
-                                if (workbook.Sheets[nameSheet][check2]) {
+                            console.log('Hàng thiếu dữ liệu', C)
 
-                                    const objTest = { [`${workbook.Sheets[nameSheet][check].v}`]: workbook.Sheets[nameSheet][check2].v }
+                            if (workbook.Sheets[nameSheet][B]) {
 
-                                    dataFinish = [...dataFinish, objTest]
+                                const objTest = { [`ezAme${workbook.Sheets[nameSheet][C].v}`]: workbook.Sheets[nameSheet][B].v }
 
-                                } else {
+                                dataFinish = [...dataFinish, objTest]
 
-                                    console.log('')
+                            } else {
 
-                                }
-
+                                console.log('')
 
                             }
 
-                            // Convert JSON
-                            let jsonObject = JSON.stringify(dataFinish);
-
-                            // Log
-                            console.log(jsonObject)
-
-                            console.log('Ket Thuc')
-
-                            // Download
-                            download(jsonObject, `${nameSheet}` + '.js', 'application/json');
 
                         }
+
+                        // Convert JSON 
+                        let jsonObject = JSON.stringify(dataFinish);
+
+                        // Log
+                        console.log(jsonObject)
+
+                        console.log('Ket Thuc')
+
+                        // Download
+                        download(jsonObject, `${nameSheet}-VN` + '.js', 'application/json');
+
                     }
 
 
