@@ -90,48 +90,41 @@
                         for (i = 0; i <= arrayCheckColumn.length - 1; i++) {
                             var check = `${arrayCheckColumn[i]}3`;
 
+                            // NOTE: check value duoi' ten xem co du lieu hay k
+                            var check2 = `${arrayCheckColumn[i]}4`;
+
                             if (workbook.Sheets[nameSheet][check]) {
 
-                                arrayResultCheckColumn = [...arrayResultCheckColumn, arrayCheckColumn[i]]
+                                if (workbook.Sheets[nameSheet][check2]) {
+                                    arrayResultCheckColumn = [...arrayResultCheckColumn, arrayCheckColumn[i]]
 
-                                console.log(arrayResultCheckColumn)
+                                    console.log(arrayResultCheckColumn)
+                                }
+
                             }
 
                         }
 
-                        // Show Data HTML
-                        document.getElementById("resultCountCheck").innerHTML = arrayResultCheckColumn.length;
-
-                        document.getElementById("resultColumnCheck").innerHTML = arrayResultCheckColumn;
-
-                        document.getElementById("resultCountFile").innerHTML = arrayResultCheckColumn.length - 1;
-
-                        document.getElementById("resultFileEnd").innerHTML = `${arrayResultCheckColumn.length - 2}`;
-
-                        document.getElementById("resultCount").innerHTML = workbook.Strings.Count;
-
-                        document.getElementById("resultUnique").innerHTML = workbook.Strings.Unique;
 
                         // Check : for [A-Z] => for [1 - String / [A-Z].length]
 
 
-                        for (i = 1; i <= arrayResultCheckColumn.length - 2; i++) {
+                        for (i = 0; i < arrayResultCheckColumn.length - 1; i++) {
 
-                            var dataFinish = []
+                            var dataFinish = {}
 
                             var nameFile = ''
 
-                            // NOTE: Vi du lieu file tu` dong` 3 nen update lai j = 3
-                            for (j = 3; j <= workbook.Strings.length / arrayResultCheckColumn.length; j++) {
+                            // NOTE: Vi du lieu file tu` dong` so' 4 nen update lai j = 3
+                            for (j = 4; j <= workbook.Strings.length / arrayResultCheckColumn.length; j++) {
 
                                 // set key = col A(j)
-
                                 let check = `${arrayCheckColumn[0]}${j}`;
 
                                 // set value = col [B,C,D,E,F,...](j)
                                 let check2 = `${arrayCheckColumn[i + 1]}${j}`;
 
-                                let check3 = `${arrayCheckColumn[i]}3`;
+                                let check3 = `${arrayCheckColumn[i + 1]}3`;
 
                                 console.log('Hàng thiếu dữ liệu', check)
 
@@ -141,27 +134,23 @@
                                     console.log('')
                                 }
 
-                                if (workbook.Sheets[nameSheet][check2]) {
-
-                                    var objTest;
-
-                                    // NOTE: vi` A3 k co nen cho A3 = key
-                                    if (j = 3) {
-                                        objTest = { key: workbook.Sheets[nameSheet][check2].v }
-                                    } else {
-                                        objTest = { [`${workbook.Sheets[nameSheet][check].v}`]: workbook.Sheets[nameSheet][check2].v }
-                                    }
-
-                                    dataFinish = [...dataFinish, objTest]
-
+                                if (workbook.Sheets[nameSheet][check3]) {
+                                    nameFile = workbook.Sheets[nameSheet][check3].v
                                 } else {
-
                                     console.log('')
-
                                 }
 
+                                // NOTE: Format lai kieu json xuat ra
+                                if (workbook.Sheets[nameSheet][check2] && workbook.Sheets[nameSheet][check]) {
+                                    objTest = { [`${workbook.Sheets[nameSheet][check].v ? workbook.Sheets[nameSheet][check].v : ''}`]: workbook.Sheets[nameSheet][check2].v ? workbook.Sheets[nameSheet][check2].v : '' }
 
+                                    dataFinish = { ...dataFinish, ...objTest }
+
+                                } else {
+                                    console.log('')
+                                }
                             }
+
                             // Convert JSON
                             let jsonObject = JSON.stringify(dataFinish);
 
@@ -171,7 +160,7 @@
                             console.log('Ket Thuc')
 
                             // Download
-                            download(jsonObject, `123` + '.js', 'application/json');
+                            download(jsonObject, `${nameSheet} - ${nameFile}` + '.json', 'application/json');
 
                         }
                     }
